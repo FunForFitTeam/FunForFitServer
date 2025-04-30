@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Initialize Firebase Admin
 admin.initializeApp({
-  credential: admin.credential.applicationDefault()
+  credential: admin.credential.cert(JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON))
 });
 
 app.post('/lineLogin', async (req, res) => {
@@ -42,3 +42,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
